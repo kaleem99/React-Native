@@ -1,0 +1,23 @@
+{
+  "Fries": [
+    {
+      "id": "1",
+      "name": "Small French Fries ",
+      "price": "10",
+      "details": " Doubled fried classic french fries. Comes with sauces of choice "
+    },
+    {
+      "id": "2",
+      "name": "Medium French Fries ",
+      "price": "15",
+      "details": " Doubled fried classic french fries. Comes with sauces of choice "
+    },
+    {
+      "id": "3",
+      "name": "Large French Fries ",
+      "price": "20",
+      "details": " Doubled fried classic french fries. Comes with sauces of choice "
+    }
+  ]
+  
+}

@@ -1,0 +1,173 @@
+// import { View, Text, Button } from "react-native";
+
+// export default function OrderNow({setState}) {
+//   return <View>
+//       <Text>Orders Page</Text>
+//       <Button title="Back" onPress={() => setState("Location")}/>
+//   </View>;
+// }
+
+import React, { Component } from "react";
+import {
+  View,
+  StyleSheet,
+  Text,
+  TextInput,
+  Button,
+  Linking,
+} from "react-native";
+import Lottie from "lottie-react-native";
+
+export default class OrderNow extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      mobileNo: "0691190911",
+      message: "",
+    };
+  }
+  openWhatsApp = () => {
+    let msg = this.state.message;
+    let mobile = this.state.mobileNo;
+    if (mobile) {
+      if (msg) {
+        let url =
+          "whatsapp://send?text=" +
+          this.state.message +
+          "&phone=27" +
+          this.state.mobileNo;
+        Linking.openURL(url)
+          .then((data) => {
+            console.log("WhatsApp Opened successfully " + data);
+          })
+          .catch(() => {
+            alert("Make sure WhatsApp installed on your device");
+          });
+      } else {
+        alert("Please enter message to send");
+      }
+    } else {
+      alert("Please enter mobile no");
+    }
+  };
+  render() {
+    return (
+      <View style={styles.container}>
+        <View style={styles.lottie}>
+          <Lottie source={require("../assets/order.json")} autoPlay loop />
+        </View>
+        <View style={styles.textBox}>
+          <Text
+            style={{ textAlign: "center", fontSize: 20, paddingVertical: 30 }}
+          >
+            Open WhatsApp chat box to Complete Orders
+          </Text>
+          <TextInput
+            value={this.state.message}
+            onChangeText={(message) => this.setState({ message })}
+            placeholder={"Type Your Order Your"}
+            multiline={true}
+            style={[
+              styles.input,
+              {
+                height: 200,
+                width: "100%",
+                marginLeft: "auto",
+                marginRight: "auto",
+                textAlign: "center",
+              },
+            ]}
+          />
+          <View style={{ marginTop: 20 }}>
+            <Button
+              onPress={this.openWhatsApp}
+              title="Order Now"
+              color={"#e49c24"}
+            />
+          </View>
+        </View>
+        <View style={{ marginTop: "5%", width: "100%" }}>
+          <Button
+            color={"#e49c24"}
+            onPress={() => this.props.setState("")}
+            title="Back To Home"
+          />
+        </View>
+      </View>
+    );
+  }
+}
+
+const styles = StyleSheet.create({
+  container: {
+    // flex: 1,
+    alignItems: "center",
+    padding: 30,
+    width: "100%",
+    height: "100%",
+    backgroundColor: "#9AFFF3",
+  },
+  textBox: {
+    width: "100%",
+    height: "50%",
+    marginTop: "1%",
+    // position: "absolute",
+    // top: "40%",
+  },
+  input: {
+    width: 255,
+    height: 44,
+    padding: 10,
+    margin: 10,
+    backgroundColor: "#FFF",
+    borderColor: "#000",
+    borderRadius: 0.5,
+    borderWidth: 0.5,
+  },
+  lottie: {
+    width: "60%",
+    height: "30%",
+    // position: "",
+    top: "3%",
+  },
+});
+
+
+
+
+
+// {
+  //   "id": "4",
+  //   "name": "X Large French Fries ",
+  //   "price": "25",
+  //   "details": " Doubled fried classic french fries. Comes with sauces of choice "
+  // },
+  // {
+  //   "id": "5",
+  //   "name": "Medium Snoek Meal",
+  //   "price": "30",
+  //   "details": " Medium Snoek and Chips"
+  // },
+  // {
+  //   "id": "6",
+  //   "name": "Large Snoek Meal ",
+  //   "price": "10",
+  //   "details": " Doubled fried classic french fries. Comes with sauces of choice "
+  // },
+  // {
+  //   "id": "7",
+  //   "name": "Small French Fries ",
+  //   "price": "10",
+  //   "details": " Doubled fried classic french fries. Comes with sauces of choice "
+  // },
+  // {
+  //   "id": "8",
+  //   "name": "Small French Fries ",
+  //   "price": "10",
+  //   "details": " Doubled fried classic french fries. Comes with sauces of choice "
+  // },
+  // {
+  //   "id": "9",
+  //   "name": "GO",
+  //   "details": "System Programming, Audio Editing, Big Data"
+  // }
